@@ -153,6 +153,7 @@
       align-items: flex-start;
       gap: 40px;
       flex-wrap: wrap;
+      margin-top: 40px; /* Obniżenie elementów w widoku gry */
     }
 
     .time-label {
@@ -240,7 +241,7 @@
     }
 
     #bingo-image {
-      width: clamp(300px, 50vw, 500px);
+      width: clamp(350px, 60vw, 600px); /* Powiększenie grafik */
       height: auto;
       border-radius: 12px;
       margin-bottom: 20px;
@@ -249,12 +250,12 @@
     .image-navigation {
       display: flex;
       justify-content: space-between;
-      width: clamp(300px, 50vw, 500px);
+      width: clamp(350px, 60vw, 600px); /* Dopasowanie do szerokości grafik */
       gap: 20px;
     }
 
     .image-navigation button {
-      width: 120px;
+      width: calc(50% - 10px); /* Szerokość od środka do krawędzi grafiki */
       padding: 15px 20px;
       font-size: 20px;
       font-weight: bold;
@@ -360,15 +361,15 @@
       }
 
       #bingo-image {
-        width: clamp(200px, 80vw, 300px);
+        width: clamp(250px, 90vw, 350px); /* Powiększenie grafik na urządzeniach mobilnych */
       }
 
       .image-navigation {
-        width: clamp(200px, 80vw, 300px);
+        width: clamp(250px, 90vw, 350px); /* Dopasowanie do szerokości grafik */
       }
 
       .image-navigation button {
-        width: 100px;
+        width: calc(50% - 10px); /* Szerokość od środka do krawędzi grafiki */
         font-size: 16px;
         padding: 10px 15px;
       }
@@ -437,7 +438,7 @@
 
     <div style="display: flex; flex-direction: column; align-items: center;">
       <div class="time-label" id="gameTimeLabel">
-        Czas automatycznego przełączania:
+        Obrazek zmieni się za: <!-- Zmiana tekstu -->
         <span id="gameTimeDisplay" class="time-display">Bez czasu</span>
       </div>
 
@@ -539,14 +540,13 @@
           gameSeconds--;
           gameTimeDisplay.textContent = formatTime(gameSeconds);
           if (gameSeconds <= 0) {
-            clearInterval(autoSwitchTimer);
-            endGame();
-          } else {
             currentImageIndex++;
             if (currentImageIndex >= imageSequence.length) {
               endGame();
             } else {
               updateImage();
+              gameSeconds = gameTime; // Resetowanie czasu dla kolejnego obrazka
+              gameTimeDisplay.textContent = formatTime(gameSeconds);
             }
           }
         }, 1000);
@@ -558,7 +558,6 @@
       clearInterval(gameTimer);
       started = false;
       startBtn.disabled = false;
-      startBtn.textContent = "Start";
       currentImageIndex = -1;
       bingoImage.src = "bingo-swiateczne/0.png";
       prevBtn.disabled = true;
@@ -576,7 +575,6 @@
       gameTime = null;
       started = false;
       startBtn.disabled = false;
-      startBtn.textContent = "Start";
       currentImageIndex = -1;
       bingoImage.src = "bingo-swiateczne/0.png";
       prevBtn.disabled = true;
@@ -626,7 +624,6 @@
         currentImageIndex = 0;
         updateImage();
         startBtn.disabled = true;
-        startBtn.textContent = "Restart";
         started = true;
         if (gameTime > 0) {
           startGameTimer();
