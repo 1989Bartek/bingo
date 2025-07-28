@@ -29,7 +29,7 @@
       overflow: visible;
     }
 
-    #game-title {
+    .game-title {
       text-align: center;
       font-size: 64px;
       margin-bottom: 20px;
@@ -317,7 +317,7 @@
     }
 
     @media (max-width: 768px) {
-      #game-title {
+      .game-title {
         font-size: 48px;
       }
 
@@ -462,17 +462,16 @@
   </style>
 </head>
 <body>
-  <h1 id="game-title">Świąteczne Bingo</h1>
-  <div id="config-buttons">
-    <button id="instructionsBtn">Instrukcja</button>
-    <button id="configFullscreenBtn">Pełny ekran</button>
-  </div>
-  <div id="passwords-buttons">
-    <button id="passwordsBtn">Lista haseł</button>
-    <button id="passwordsPdfBtn">Lista haseł PDF</button>
-  </div>
-
   <div id="config-screen">
+    <h1 class="game-title">Świąteczne Bingo</h1>
+    <div id="config-buttons">
+      <button id="instructionsBtn">Instrukcja</button>
+      <button id="configFullscreenBtn">Pełny ekran</button>
+    </div>
+    <div id="passwords-buttons">
+      <button id="passwordsBtn">Lista haseł</button>
+      <button id="passwordsPdfBtn">Lista haseł PDF</button>
+    </div>
     <div class="config-container">
       <div class="section-title">Czas automatycznego przełączania obrazków:</div>
       <div class="button-group" id="gameTimeGroup">
@@ -492,6 +491,7 @@
   </div>
 
   <div id="instructions-screen">
+    <h1 class="game-title">Świąteczne Bingo</h1>
     <div id="instructions-text">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
@@ -509,6 +509,7 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
   </div>
 
   <div id="passwords-screen">
+    <h1 class="game-title">Świąteczne Bingo</h1>
     <div id="passwords-grid">
       <img src="bingo-swiateczne/1a.png" alt="1a" />
       <img src="bingo-swiateczne/2a.png" alt="2a" />
@@ -557,6 +558,7 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
   </div>
 
   <div id="game-container">
+    <h1 class="game-title">Świąteczne Bingo</h1>
     <div id="image-container">
       <img id="bingo-image" src="bingo-swiateczne/0.png" alt="Bingo Image" />
       <div class="image-navigation">
