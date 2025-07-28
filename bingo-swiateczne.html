@@ -381,7 +381,17 @@
         margin-bottom: 10px;
       }
 
-      #instructions-screen, #passwords-screen {
+      #instructions-screen {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      #instructions-text {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      #passwords-screen {
         width: 100%;
         max-width: 800px;
       }
@@ -457,6 +467,18 @@
 
       #config-buttons, #passwords-buttons {
         flex-direction: row;
+      }
+
+      #instructions-screen {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      #instructions-text {
+        width: 100%;
+        max-width: 800px;
       }
     }
   </style>
@@ -625,7 +647,7 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
 
     // Funkcje konfiguracyjne
     const activateSingleButton = (group, value, setCallback) => {
-      [...group.querySelectorAll("button")].forEach(btn =>{
+      [...group.querySelectorAll("button")].forEach(btn => {
         btn.classList.toggle("active", btn.dataset.time == value);
       });
       setCallback(value);
