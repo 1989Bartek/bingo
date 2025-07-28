@@ -45,10 +45,8 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 40px;
       margin-bottom: 20px;
       font-size: 0.9rem;
-      transform: scale(0.94);
       margin-left: auto;
       margin-right: auto;
       flex-direction: column;
@@ -98,7 +96,7 @@
       cursor: not-allowed;
     }
 
-    #nextBtn, #configFullscreenBtn, #instructionsBtn, #passwordsBtn, #passwordsPdfBtn, #gamePasswordsBtn, #passwordsReturnBtn {
+    #nextBtn, #configFullscreenBtn, #instructionsBtn, #passwordsBtn, #passwordsPdfBtn, #gamePasswordsBtn, #passwordsReturnBtn, #instructionsReturnBtn {
       width: 240px;
       height: 52px;
       font-size: 18px;
@@ -139,7 +137,7 @@
       display: flex;
       justify-content: center;
       margin-top: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     #instructions-screen, #passwords-screen {
@@ -149,6 +147,9 @@
       width: 100%;
       max-width: 800px;
       margin: 0 auto;
+      box-sizing: border-box;
+      contain: content;
+      overflow: hidden;
     }
 
     #instructions-text {
@@ -158,6 +159,13 @@
       margin-bottom: 20px;
       white-space: pre-wrap;
       width: 100%;
+      max-width: 800px;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      overflow-x: hidden;
     }
 
     #passwords-grid {
@@ -165,6 +173,8 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 10px;
       margin-bottom: 20px;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     #passwords-grid img {
@@ -190,7 +200,7 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      margin-top: 20px; /* Obniżenie na komputerach */
+      margin-top: 20px;
     }
 
     .time-display {
@@ -301,6 +311,11 @@
       cursor: not-allowed;
     }
 
+    #instructionsReturnBtn, #passwordsReturnBtn {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
     @media (max-width: 768px) {
       #game-title {
         font-size: 48px;
@@ -309,7 +324,6 @@
       .config-container {
         flex-direction: column;
         align-items: center;
-        transform: scale(1);
         width: 100%;
         max-width: 340px;
       }
@@ -328,7 +342,7 @@
         max-width: 140px;
       }
 
-      #instructionsBtn, #configFullscreenBtn, #passwordsBtn, #passwordsPdfBtn, #nextBtn {
+      #instructionsBtn, #configFullscreenBtn, #passwordsBtn, #passwordsPdfBtn, #nextBtn, #instructionsReturnBtn {
         width: 292px;
         max-width: 292px;
         margin-left: auto;
@@ -363,6 +377,8 @@
       #nextBtn-container {
         width: 100%;
         max-width: 340px;
+        margin-top: 20px;
+        margin-bottom: 10px;
       }
 
       #instructions-screen, #passwords-screen {
@@ -373,6 +389,7 @@
       #passwords-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+        max-width: 100%;
       }
 
       #passwords-grid img {
@@ -476,7 +493,15 @@
 
   <div id="instructions-screen">
     <div id="instructions-text">
-      Gra Świąteczne Bingo polega na odnajdywaniu pasujących elementów na planszy. Szczegółowe instrukcje gry zostaną dodane w przyszłości.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
     </div>
     <button id="instructionsReturnBtn">Powrót</button>
     <img id="logo" src="bingo-swiateczne/logo.png" alt="Logo" />
@@ -600,7 +625,7 @@
 
     // Funkcje konfiguracyjne
     const activateSingleButton = (group, value, setCallback) => {
-      [...group.querySelectorAll("button")].forEach(btn => {
+      [...group.querySelectorAll("button")].forEach(btn =>{
         btn.classList.toggle("active", btn.dataset.time == value);
       });
       setCallback(value);
@@ -872,4 +897,3 @@
   </script>
 </body>
 </html>
-
