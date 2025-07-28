@@ -16,7 +16,7 @@
       font-family: Arial, sans-serif;
       background: radial-gradient(ellipse at center, #b60000 0%, #750000 100%);
       color: #ffffff;
-      padding: 20px;
+      padding: 100px 20px 20px 20px; /* Dodane padding-top dla tytułu */
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -25,7 +25,7 @@
     }
 
     body.fullscreen-active {
-      padding-top: 120px;
+      padding-top: 160px; /* 120px + kompensacja tytułu */
       overflow: visible;
     }
 
@@ -37,11 +37,12 @@
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
       width: 100%;
       max-width: 800px;
-      display: block;
-      margin: 0 auto 20px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      margin: 0 auto;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
     }
 
     .config-container {
@@ -151,6 +152,8 @@
       width: 100%;
       max-width: 800px;
       margin: 0 auto;
+      box-sizing: border-box;
+      contain: content;
     }
 
     #instructions-text {
@@ -174,6 +177,7 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 10px;
       margin-bottom: 20px;
+      max-width: 100%;
     }
 
     #passwords-grid img {
@@ -388,6 +392,7 @@
       #passwords-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+        max-width: 100%;
       }
 
       #passwords-grid img {
