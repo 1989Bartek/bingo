@@ -96,7 +96,7 @@
       cursor: not-allowed;
     }
 
-    #nextBtn, #configFullscreenBtn, #instructionsBtn, #instructionsReturnBtn {
+    #nextBtn, #configFullscreenBtn, #instructionsBtn, #instructionsReturnBtn, #passwordsBtn, #passwordsPdfBtn, #gamePasswordsBtn {
       width: 240px;
       height: 52px;
       font-size: 18px;
@@ -124,6 +124,15 @@
       justify-content: center;
     }
 
+    #passwords-buttons {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+    }
+
     #nextBtn-container {
       display: flex;
       justify-content: center;
@@ -131,7 +140,7 @@
       margin-bottom: 20px;
     }
 
-    #instructions-screen {
+    #instructions-screen, #passwords-screen {
       display: none;
       flex-direction: column;
       align-items: center;
@@ -139,7 +148,7 @@
       margin: 0 auto;
     }
 
-    #instructions-text {
+    #instructions-text, #passwords-text {
       font-size: 17px;
       line-height: 1.5;
       text-align: justify;
@@ -153,7 +162,7 @@
       align-items: flex-start;
       gap: 40px;
       flex-wrap: wrap;
-      margin-top: 40px; /* Obniżenie elementów w widoku gry */
+      margin-top: 40px;
     }
 
     .time-label {
@@ -229,6 +238,7 @@
       margin-left: auto;
       margin-right: auto;
       display: block;
+      margin-top: 10px; /* Ujednolicony odstęp od logo do www */
     }
 
     #website-link {
@@ -241,7 +251,7 @@
     }
 
     #bingo-image {
-      width: clamp(350px, 60vw, 600px); /* Powiększenie grafik */
+      width: clamp(350px, 60vw, 600px);
       height: auto;
       border-radius: 12px;
       margin-bottom: 20px;
@@ -250,12 +260,12 @@
     .image-navigation {
       display: flex;
       justify-content: space-between;
-      width: clamp(350px, 60vw, 600px); /* Dopasowanie do szerokości grafik */
+      width: clamp(350px, 60vw, 600px);
       gap: 20px;
     }
 
     .image-navigation button {
-      width: calc(50% - 10px); /* Szerokość od środka do krawędzi grafiki */
+      width: calc(50% - 10px);
       padding: 15px 20px;
       font-size: 20px;
       font-weight: bold;
@@ -300,7 +310,7 @@
         max-width: 140px;
       }
 
-      #instructionsBtn, #nextBtn {
+      #instructionsBtn, #nextBtn, #passwordsBtn, #passwordsPdfBtn {
         width: 292px;
         max-width: 292px;
       }
@@ -318,14 +328,25 @@
         width: 100%;
         max-width: 340px;
         justify-content: center;
+        flex-direction: column; /* Dla mobilnych przyciski w kolumnie */
+        gap: 10px;
+      }
+
+      #passwords-buttons {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+        flex-direction: column; /* Dla mobilnych przyciski w kolumnie */
+        gap: 10px;
       }
 
       #nextBtn-container {
         width: 100%;
         max-width: 340px;
+        margin-top: 10px; /* Przycisk "Dalej" zaraz pod "Instrukcja" */
       }
 
-      #instructions-screen {
+      #instructions-screen, #passwords-screen {
         width: 100%;
         max-width: 800px;
       }
@@ -333,6 +354,7 @@
       #logo {
         width: 150px;
         max-width: 340px;
+        margin-top: 10px; /* Ujednolicony odstęp od logo do www */
       }
 
       #website-link {
@@ -361,15 +383,15 @@
       }
 
       #bingo-image {
-        width: clamp(250px, 90vw, 350px); /* Powiększenie grafik na urządzeniach mobilnych */
+        width: clamp(250px, 90vw, 350px);
       }
 
       .image-navigation {
-        width: clamp(250px, 90vw, 350px); /* Dopasowanie do szerokości grafik */
+        width: clamp(250px, 90vw, 350px);
       }
 
       .image-navigation button {
-        width: calc(50% - 10px); /* Szerokość od środka do krawędzi grafiki */
+        width: calc(50% - 10px);
         font-size: 16px;
         padding: 10px 15px;
       }
@@ -385,7 +407,7 @@
         flex-direction: row;
       }
 
-      #config-buttons {
+      #config-buttons, #passwords-buttons {
         flex-direction: row;
       }
     }
@@ -396,6 +418,10 @@
 
   <div id="config-screen">
     <div class="config-container">
+      <div id="passwords-buttons">
+        <button id="passwordsBtn">Lista haseł</button>
+        <button id="passwordsPdfBtn">Lista haseł PDF</button>
+      </div>
       <div class="section-title">Czas automatycznego przełączania obrazków:</div>
       <div class="button-group" id="gameTimeGroup">
         <button data-time="5">5 sek.</button>
@@ -427,18 +453,28 @@
     <div id="website-link">WWW.MUZYKAMIKROFONACKJA.PL</div>
   </div>
 
+  <div id="passwords-screen">
+    <div id="passwords-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <button id="passwordsReturnBtn">Powrót</button>
+    <img id="logo" src="bingo-swiateczne/logo.png" alt="Logo" />
+    <div id="website-link">WWW.MUZYKAMIKROFONACKJA.PL</div>
+  </div>
+
   <div id="game-container">
     <div id="image-container">
       <img id="bingo-image" src="bingo-swiateczne/0.png" alt="Bingo Image" />
       <div class="image-navigation">
-        <button id="prevBtn">Poprzedni</button>
-        <button id="nextImageBtn">Następny</button>
+        <button id="prevBtn" disabled>Poprzedni</button>
+        <button id="nextImageBtn" disabled>Następny</button>
       </div>
     </div>
 
     <div style="display: flex; flex-direction: column; align-items: center;">
+      <button id="gamePasswordsBtn">Lista haseł</button>
       <div class="time-label" id="gameTimeLabel">
-        Obrazek zmieni się za: <!-- Zmiana tekstu -->
+        Obrazek zmieni się za:
         <span id="gameTimeDisplay" class="time-display">Bez czasu</span>
       </div>
 
@@ -460,10 +496,16 @@
     const nextBtn = document.getElementById("nextBtn");
     const configFullscreenBtn = document.getElementById("configFullscreenBtn");
     const instructionsBtn = document.getElementById("instructionsBtn");
+    const passwordsBtn = document.getElementById("passwordsBtn");
+    const passwordsPdfBtn = document.getElementById("passwordsPdfBtn");
 
     // Elementy ekranu instrukcji
     const instructionsScreen = document.getElementById("instructions-screen");
     const instructionsReturnBtn = document.getElementById("instructionsReturnBtn");
+
+    // Elementy ekranu listy haseł
+    const passwordsScreen = document.getElementById("passwords-screen");
+    const passwordsReturnBtn = document.getElementById("passwordsReturnBtn");
 
     // Elementy ekranu gry
     const gameContainer = document.getElementById("game-container");
@@ -471,6 +513,7 @@
     const endBtn = document.getElementById("endBtn");
     const fullscreenBtn = document.getElementById("fullscreenBtn");
     const returnBtn = document.getElementById("returnBtn");
+    const gamePasswordsBtn = document.getElementById("gamePasswordsBtn");
     const gameTimeDisplay = document.getElementById("gameTimeDisplay");
     const bingoImage = document.getElementById("bingo-image");
     const prevBtn = document.getElementById("prevBtn");
@@ -526,7 +569,11 @@
       } else {
         bingoImage.src = "bingo-swiateczne/0.png";
         prevBtn.disabled = true;
-        nextImageBtn.disabled = false;
+        nextImageBtn.disabled = true;
+      }
+      if (gameTime > 0) {
+        gameSeconds = gameTime; // Resetowanie czasu przy zmianie obrazka
+        gameTimeDisplay.textContent = formatTime(gameSeconds);
       }
     };
 
@@ -545,8 +592,6 @@
               endGame();
             } else {
               updateImage();
-              gameSeconds = gameTime; // Resetowanie czasu dla kolejnego obrazka
-              gameTimeDisplay.textContent = formatTime(gameSeconds);
             }
           }
         }, 1000);
@@ -558,10 +603,11 @@
       clearInterval(gameTimer);
       started = false;
       startBtn.disabled = false;
+      startBtn.style.opacity = "1"; // Przywracanie aktywności przycisku Start
       currentImageIndex = -1;
       bingoImage.src = "bingo-swiateczne/0.png";
       prevBtn.disabled = true;
-      nextImageBtn.disabled = false;
+      nextImageBtn.disabled = true;
       gameTimeDisplay.textContent = gameTime === 0 ? "Bez czasu" : formatTime(gameTime);
     };
 
@@ -569,21 +615,32 @@
     const showConfigScreen = () => {
       configScreen.style.display = "block";
       instructionsScreen.style.display = "none";
+      passwordsScreen.style.display = "none";
       gameContainer.style.display = "none";
       window.scrollTo({ top: 0, behavior: 'smooth' });
       gameTimeGroup.querySelectorAll("button").forEach(btn => btn.classList.remove("active"));
       gameTime = null;
       started = false;
       startBtn.disabled = false;
+      startBtn.style.opacity = "1";
       currentImageIndex = -1;
       bingoImage.src = "bingo-swiateczne/0.png";
       prevBtn.disabled = true;
-      nextImageBtn.disabled = false;
+      nextImageBtn.disabled = true;
     };
 
     const showInstructionsScreen = () => {
       configScreen.style.display = "none";
       instructionsScreen.style.display = "flex";
+      passwordsScreen.style.display = "none";
+      gameContainer.style.display = "none";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const showPasswordsScreen = () => {
+      configScreen.style.display = "none";
+      instructionsScreen.style.display = "none";
+      passwordsScreen.style.display = "flex";
       gameContainer.style.display = "none";
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -591,6 +648,7 @@
     const showGameScreen = () => {
       configScreen.style.display = "none";
       instructionsScreen.style.display = "none";
+      passwordsScreen.style.display = "none";
       gameContainer.style.display = "flex";
       window.scrollTo({ top: 0, behavior: 'smooth' });
       gameTime = gameTime || 0;
@@ -602,7 +660,7 @@
       gameSeconds = gameTime;
       bingoImage.src = "bingo-swiateczne/0.png";
       prevBtn.disabled = true;
-      nextImageBtn.disabled = false;
+      nextImageBtn.disabled = true;
     };
 
     // Obsługa przycisków
@@ -618,13 +676,32 @@
       showConfigScreen();
     });
 
+    passwordsBtn.addEventListener("click", () => {
+      showPasswordsScreen();
+    });
+
+    passwordsPdfBtn.addEventListener("click", () => {
+      // Funkcjonalność PDF do dodania w przyszłości
+      alert("Funkcjonalność Lista haseł PDF nie jest jeszcze dostępna.");
+    });
+
+    passwordsReturnBtn.addEventListener("click", () => {
+      showConfigScreen();
+    });
+
+    gamePasswordsBtn.addEventListener("click", () => {
+      showPasswordsScreen();
+    });
+
     startBtn.addEventListener("click", () => {
       if (!started) {
         shuffleImages();
         currentImageIndex = 0;
         updateImage();
         startBtn.disabled = true;
+        startBtn.style.opacity = "0.5"; // Wyblakły przycisk Start
         started = true;
+        nextImageBtn.disabled = false; // Przycisk Następny staje się klikalny
         if (gameTime > 0) {
           startGameTimer();
         }
@@ -633,6 +710,7 @@
         shuffleImages();
         currentImageIndex = 0;
         updateImage();
+        nextImageBtn.disabled = false;
         if (gameTime > 0) {
           startGameTimer();
         }
@@ -647,6 +725,10 @@
       if (currentImageIndex > 0) {
         currentImageIndex--;
         updateImage();
+        if (gameTime > 0) {
+          clearInterval(autoSwitchTimer);
+          startGameTimer(); // Resetowanie timera
+        }
       }
     });
 
@@ -654,6 +736,10 @@
       if (currentImageIndex < imageSequence.length - 1) {
         currentImageIndex++;
         updateImage();
+        if (gameTime > 0) {
+          clearInterval(autoSwitchTimer);
+          startGameTimer(); // Resetowanie timera
+        }
       }
     });
 
@@ -690,8 +776,10 @@
     // Inicjalizacja
     configScreen.style.display = "block";
     instructionsScreen.style.display = "none";
+    passwordsScreen.style.display = "none";
     gameContainer.style.display = "none";
     prevBtn.disabled = true;
+    nextImageBtn.disabled = true;
   </script>
 </body>
 </html>
