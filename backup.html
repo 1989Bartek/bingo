@@ -153,19 +153,15 @@
     }
 
     #instructions-text {
-      font-size: 17px;
+      font-size: clamp(16px, 2.5vw, 17px);
       line-height: 1.5;
       text-align: justify;
       margin-bottom: 20px;
       white-space: pre-wrap;
       width: 100%;
-      max-width: 800px;
+      max-width: 100%;
+      padding: 0 20px;
       box-sizing: border-box;
-      overflow-wrap: break-word;
-      hyphens: auto;
-      -webkit-hyphens: auto;
-      -moz-hyphens: auto;
-      overflow-x: hidden;
     }
 
     #passwords-grid {
@@ -381,7 +377,17 @@
         margin-bottom: 10px;
       }
 
-      #instructions-screen, #passwords-screen {
+      #instructions-screen {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      #instructions-text {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      #passwords-screen {
         width: 100%;
         max-width: 800px;
       }
@@ -458,6 +464,18 @@
       #config-buttons, #passwords-buttons {
         flex-direction: row;
       }
+
+      #instructions-screen {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      #instructions-text {
+        width: 100%;
+        max-width: 800px;
+      }
     }
   </style>
 </head>
@@ -492,17 +510,11 @@
   </div>
 
   <div id="instructions-screen">
-    <div id="instructions-text">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.
-    </div>
+    <div id="instructions-text">Gra oparta jest na klasycznych zasadach Memory. Uczestnicy dzielą się na dwie drużyny, które na zmianę odkrywają po dwa kafelki. Jeśli trafią parę takich samych obrazków, zostaje ona odkryta na stałe, a drużyna zdobywa punkt i wykonuje kolejny ruch. W przypadku odkrycia dwóch różnych kafelków, są one zakrywane, a kolejka przechodzi na drużynę przeciwną. 
+</br>Przed startem gry należy w odpowiednich polach wpisać nazwy drużyn oraz wybrać, która z nich będzie rozpoczynać. W tych samych ustawieniach można również ustalić czas na całą rozgrywkę lub czas na ruch każdej z drużyn. Do wyboru jest kilka wariantów czasowych oraz opcja grania bez czasu.
+</br>Po przekroczeniu czasu na całą rozgrywkę, wygrywa drużyna, która zdobyła więcej punktów (nawet jeśli wszystkie kafelki nie zostały odkryte). W przypadku przekroczenia czasu przeznaczonego na ruch drużyny, kolejka automatycznie przechodzi na drużynę przeciwną.
+</br>Istnieje również wariant gry bez rywalizacji i podziału na drużyny. W takim przypadku można grać indywidualnie lub współpracując z całą grupą, starając się wspólnie odkryć wszystkie pary, zarówno w wersji z określonym czasem jak i bez. 
+</div>
     <button id="instructionsReturnBtn">Powrót</button>
     <img id="logo" src="bingo-swiateczne/logo.png" alt="Logo" />
     <div id="website-link">WWW.MUZYKAMIKROFONACKJA.PL</div>
@@ -625,7 +637,7 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
 
     // Funkcje konfiguracyjne
     const activateSingleButton = (group, value, setCallback) => {
-      [...group.querySelectorAll("button")].forEach(btn =>{
+      [...group.querySelectorAll("button")].forEach(btn => {
         btn.classList.toggle("active", btn.dataset.time == value);
       });
       setCallback(value);
